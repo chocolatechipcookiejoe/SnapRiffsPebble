@@ -2,7 +2,16 @@
  
 static Window* window;
 static TextLayer *bt_layer, *accel_layer;
- 
+
+static void send(int key, int value) {
+  DictionaryIterator *iter;
+  app_message_outbox_begin(&iter);
+
+  dict_write_int(iter, key, &value, sizeof(int), true);
+
+  app_message_outbox_send();
+}
+
 static void window_load(Window *window)
 {
   // Init bt_layer
@@ -47,7 +56,7 @@ static void bt_handler(bool connected)
 
 static void accel_tap_handler(AccelAxisType axis, int32_t direction)
 {
-  switch(axis)
+  /*switch(axis)
   {
     case ACCEL_AXIS_X:
       if (direction > 0)
@@ -74,6 +83,9 @@ static void accel_tap_handler(AccelAxisType axis, int32_t direction)
       }
       break;
   }
+  */
+  text_layer_set_text(accel_layer, "STRUMMMMMM!");
+  send(0,0);
 }
 
 static void init()
