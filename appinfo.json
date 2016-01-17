@@ -1,0 +1,19 @@
+{
+    "appKeys": {},
+    "capabilities": [
+        ""
+    ],
+    "companyName": "joseph.buchoff@rutgers.edu",
+    "longName": "SnapRiffs",
+    "projectType": "native",
+    "resources": {
+        "media": []
+    },
+    "sdkVersion": "3",
+    "shortName": "SnapRiffs",
+    "uuid": "252d564b-7fa1-4558-b319-56713468ad86",
+    "versionLabel": "1.0",
+    "watchapp": {
+        "watchface": false
+    }
+}
