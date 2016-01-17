@@ -11,6 +11,9 @@
     },
     "sdkVersion": "3",
     "shortName": "SnapRiffs",
+    "targetPlatforms": [
+        "aplite"
+    ],
     "uuid": "252d564b-7fa1-4558-b319-56713468ad86",
     "versionLabel": "1.0",
     "watchapp": {

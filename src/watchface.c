@@ -5,16 +5,26 @@ static TextLayer *bt_layer, *accel_layer;
  
 static void window_load(Window *window)
 {
+  // Init and set bt_layer text
   bt_layer = text_layer_create(GRect(5, 5, 144, 30));
-  accel_layer = text_layer_create(GRect(5, 45, 144, 30));
   text_layer_set_font(bt_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
+  
+  // Init and set accel_layer text
+  accel_layer = text_layer_create(GRect(5, 45, 144, 30));
+  text_layer_set_font(accel_layer, fonts_get_system_font(FONT_KEY_GOTHIC_18));
+  text_layer_set_text(accel_layer, "No recent taps");
+  
   if (bluetooth_connection_service_peek() == true)
   {
     text_layer_set_text(bt_layer, "BT Connected");
   } else {
     text_layer_set_text(bt_layer, "BT Disconnected");
   }
-  layer_add_child(window.get_root_layer(window), text_layer_get_layer(bt_layer));
+  // Add bt_layer
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(bt_layer));
+  
+  // Add accel_layer
+  layer_add_child(window_get_root_layer(window), text_layer_get_layer(accel_layer));
 }
  
 static void window_unload(Window *window)
@@ -36,28 +46,28 @@ static void accel_tap_handler(AccelAxisType axis, int32_t direction)
 {
   switch(axis)
   {
-    CASE ACCEL_AXIS_X:
+    case ACCEL_AXIS_X:
       if (direction > 0)
       {
-        text_layer_set_text(accel_layer, "Tap in X axis, +")
+        text_layer_set_text(accel_layer, "Tap in X axis, +");
       } else {
-        text_layer_set_text(accel_layer, "Tap in X axis, -")
+        text_layer_set_text(accel_layer, "Tap in X axis, -");
       }
       break;
-    CASE ACCEL_AXIS_Y:
+    case ACCEL_AXIS_Y:
       if (direction > 0)
       {
-        text_layer_set_text(accel_layer, "Tap in Y axis, +")
+        text_layer_set_text(accel_layer, "Tap in Y axis, +");
       } else {
-        text_layer_set_text(accel_layer, "Tap in Y axis, -")
+        text_layer_set_text(accel_layer, "Tap in Y axis, -");
       }
       break;
-    CASE ACCEL_AXIS_Z:
+    case ACCEL_AXIS_Z:
       if (direction > 0)
       {
-        text_layer_set_text(accel_layer, "Tap in Z axis, +")
+        text_layer_set_text(accel_layer, "Tap in Z axis, +");
       } else {
-        text_layer_set_text(accel_layer, "Tap in Z axis, -")
+        text_layer_set_text(accel_layer, "Tap in Z axis, -");
       }
       break;
   }
